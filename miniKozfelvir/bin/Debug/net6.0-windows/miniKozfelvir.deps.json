@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "miniKozfelvir/1.0.0": {
+        "runtime": {
+          "miniKozfelvir.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "miniKozfelvir/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

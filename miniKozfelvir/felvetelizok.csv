@@ -1,0 +1,6 @@
+om_azonosito;nev;email;szuletesi_datum;ertesitesi_cim;matek_eredmeny;magyar_eredmeny
+12345678901;Kovács Péter;kovacs.peter@example.com;1990-05-15;Budapest, Kossuth utca 10.;NULL;NULL
+23456789012;Nagy Anna;nagy.anna@example.com;1992-08-22;Debrecen, Petőfi tér 5.;25;30
+34567890123;Szabó Gábor;szabo.gabor@example.com;1995-02-10;Szeged, Széchenyi tér 8.;NULL;NULL
+45678901234;Kiss Judit;kiss.judit@example.com;1994-11-03;Pécs, Rákóczi út 12.;40;15
+56789012345;Horváth Bence;horvath.bence@example.com;1991-07-18;Miskolc, Szent István út 6.;10;20
