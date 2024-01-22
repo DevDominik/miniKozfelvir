@@ -19,7 +19,7 @@ namespace miniKozfelvir
     /// </summary>
     public partial class Diakfelulet : Window
     {
-        public Diakfelulet()
+        public Diakfelulet(ref Felvetelizo uj)
         {
             InitializeComponent();
         }

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Input;
 
 namespace miniKozfelvir
 {
-    public class Felvetelizo
+    public class Felvetelizo : IFelvetelizo
     {
         public const string CSVFEJ = "om_azonosito;nev;email;szuletesi_datum;ertesitesi_cim;matek_eredmeny;magyar_eredmeny";
 
@@ -30,7 +31,63 @@ namespace miniKozfelvir
 
         public Felvetelizo(string csvSor)
         {
-            string[] mezok = csvSor.Split(';');
+            ModositCSVSorral(csvSor);
+        }
+
+        public string OM_Azonosito
+        {
+            get => omAzon;
+            set
+            {
+                if (value.Length != 11)
+                {
+                    throw new ArgumentException("Az om azonosító hossza nem megfelelő!");
+                }
+                omAzon = value;
+            }
+        }
+        public string Neve { get => nev; set => nev = value; }
+        public string ErtesitesiCime { get => ertesitesiCim; set => ertesitesiCim = value; }
+        public string Email { get => email; set => email = value; }
+        public DateTime SzuletesiDatum { get => szuletesiDatum; set => szuletesiDatum = value; }
+        public int Matematika
+        {
+            get => Convert.ToInt32(matek);
+            set
+            {
+                if (value < 0 || value > 50)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                matek = Convert.ToByte(value);
+            }
+        }
+        public int Magyar
+        {
+            get => Convert.ToInt32(magyar);
+            set
+            {
+                if (value < 0 || value > 50)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                magyar = Convert.ToByte(value);
+            }
+        }
+
+        public override string ToString()
+        {
+            return $"{omAzon};{nev};{email};{szuletesiDatum};{ertesitesiCim};{matek};{magyar}";
+        }
+
+        public string CSVSortAdVissza()
+        {
+            return ToString();
+        }
+
+        public void ModositCSVSorral(string csvString)
+        {
+            string[] mezok = csvString.Split(';');
 
             this.omAzon = mezok[0];
             this.nev = mezok[1];
@@ -43,19 +100,6 @@ namespace miniKozfelvir
 
             byte _magyar;
             this.magyar = Byte.TryParse(mezok[6], out _magyar) ? (byte?)_magyar : null;
-        }
-
-        public string OmAzon { get => omAzon; }
-        public string Nev { get => nev; }
-        public string Email { get => email; }
-        public DateTime SzuletesiDatum { get => szuletesiDatum; }
-        public string ErtesitesiCim { get => ertesitesiCim; }
-        public byte? Matek { get => matek; }
-        public byte? Magyar { get => magyar; }
-
-        public override string ToString()
-        {
-            return $"{omAzon};{nev};{email};{szuletesiDatum};{ertesitesiCim};{matek};{magyar}";
         }
     }
 }

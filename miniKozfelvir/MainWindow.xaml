@@ -5,9 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:miniKozfelvir"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="MainWindow" Height="650" Width="1200" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
-        <DataGrid x:name="dg">
-        </DataGrid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid x:Name="dgFelvetelizok" />
+        <StackPanel Grid.Column="1">
+            <Button x:Name="btnUj" Click="btnUj_Click">Új diák</Button>
+            <Button x:Name="btnTorol" Click="btnTorol_Click">Törlés</Button>
+            <Button x:Name="btnExport" Click="btnExport_Click">Exportálás</Button>
+            <Button x:Name="btnImport" Click="btnImport_Click">Importálás</Button>
+        </StackPanel>
     </Grid>
 </Window>
