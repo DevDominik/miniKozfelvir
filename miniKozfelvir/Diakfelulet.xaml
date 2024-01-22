@@ -5,10 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:miniKozfelvir"
         mc:Ignorable="d"
-        Title="Placeholder" Height="300" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="" Height="400" Width="500" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
     <Window.Resources>
         <ResourceDictionary>
-            <Style TargetType="Button">
+            <Style TargetType="Window">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush>
+                            <SolidColorBrush.Color>
+                                <Color A="255" R="20" B="20" G="20"/>
+                            </SolidColorBrush.Color>
+                        </SolidColorBrush>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="generalStyle" TargetType="{x:Type Control}">
                 <Setter Property="Background">
                     <Setter.Value>
                         <SolidColorBrush>
@@ -28,8 +39,8 @@
                     </Setter.Value>
                 </Setter>
                 <Setter Property="BorderThickness" Value="1.6"/>
-                <Setter Property="Width" Value="150"></Setter>
-                <Setter Property="Height" Value="35"></Setter>
+                <Setter Property="Width" Value="200"></Setter>
+                <Setter Property="Height" Value="40"></Setter>
                 <Setter Property="Foreground">
                     <Setter.Value>
                         <SolidColorBrush>
@@ -40,19 +51,50 @@
                     </Setter.Value>
                 </Setter>
                 <Setter Property="FontFamily" Value="Arial"></Setter>
-                <Setter Property="FontSize" Value="15"></Setter>
+                <Setter Property="FontSize" Value="12"></Setter>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+                
+            </Style>
+            <Style x:Key="button" TargetType="Button" BasedOn="{StaticResource generalStyle}">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush>
+                            <SolidColorBrush.Color>
+                                <Color A="255" R="50" B="40" G="130"/>
+                            </SolidColorBrush.Color>
+                        </SolidColorBrush>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="missing" TargetType="{x:Type Control}" BasedOn="{StaticResource generalStyle}">
+                <Setter Property="BorderBrush">
+                    <Setter.Value>
+                        <SolidColorBrush>
+                            <SolidColorBrush.Color>
+                                <Color A="255" R="120" G="40" B="40"></Color>
+                            </SolidColorBrush.Color>
+                        </SolidColorBrush>
+                    </Setter.Value>
+                </Setter>
             </Style>
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <Rectangle Width="400" Grid.RowSpan="100">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Grid.ColumnSpan="2" Grid.RowSpan="10" Width="500" Height="400">
             <Rectangle.Fill>
                 <SolidColorBrush>
                     <SolidColorBrush.Color>
@@ -61,6 +103,14 @@
                 </SolidColorBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Button Content="A"></Button>
+        <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" x:Name="tbxDiakneve" Style="{StaticResource generalStyle}" Width="450" Text="DIÁK NEVE"/>
+        <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="tbxAzon" Style="{StaticResource generalStyle}" Width="450" Text="OM AZONOSÍTÓ"/>
+        <TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" x:Name="tbxEmail" Style="{StaticResource generalStyle}" Width="450" Text="E-MAIL CÍM"/>
+        <TextBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="tbxCim" Style="{StaticResource generalStyle}" Width="450" Text="ÉRTESÍTÉSI CÍM"/>
+        <Label Grid.Row="4" Content="SZÜLETÉSI DÁTUM" Grid.Column="0" Style="{StaticResource generalStyle}"/>
+        <DatePicker Grid.Row="4" Grid.Column="1" x:Name="dpDatum" Style="{StaticResource generalStyle}"/>
+        <TextBox Grid.Row="5" Grid.Column="0" x:Name="tbxMatek" Style="{StaticResource generalStyle}" Text="MATEMATIKA EREDMÉNY" MaxLength="2"/>
+        <TextBox Grid.Row="5" Grid.Column="1" x:Name="tbxMagyar" Style="{StaticResource generalStyle}" Text="MAGYAR EREDMÉNY" MaxLength="2"/>
+        <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" x:Name="btnFelvesz" Style="{StaticResource button}" Content="FELVÉTEL"/>
     </Grid>
 </Window>
