@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -96,7 +97,7 @@ namespace miniKozfelvir
                     brdr.Style = this.Resources["missing"] as Style;
                     return;
                 }
-                if (tbxMagyar.Text.Length > 0)
+                if (tbxMagyar.Text.Length > 0 && tbxMagyar.Text.Length < 3)
                 {
                     try
                     {
@@ -129,7 +130,7 @@ namespace miniKozfelvir
                     brdr.Style = this.Resources["missing"] as Style;
                     return;
                 }
-                if (tbxMatek.Text.Length > 0)
+                if (tbxMatek.Text.Length > 0 && tbxMatek.Text.Length < 3)
                 {
                     try
                     {
@@ -165,6 +166,8 @@ namespace miniKozfelvir
             tbxEmail.LostFocus += VisszaAllitSzoveg;
             tbxMagyar.LostFocus += VisszaAllitSzoveg;
             tbxMatek.LostFocus += VisszaAllitSzoveg;
+            tbxMagyar.PreviewTextInput += SzamValidalas;
+            tbxMatek.PreviewTextInput += SzamValidalas;
             dpDatum.SelectedDateChanged += (s, e) => {
                 felvetelizo.SzuletesiDatum = dpDatum.SelectedDate.Value;
             };
@@ -190,6 +193,10 @@ namespace miniKozfelvir
                     kuldo.Text = alapSzovegek[kuldo];
                 }
             }
+        }
+        private void SzamValidalas(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = Regex.IsMatch(e.Text, "[^0-9]+");
         }
 
         private void TorolSzoveg(object sender, RoutedEventArgs e)

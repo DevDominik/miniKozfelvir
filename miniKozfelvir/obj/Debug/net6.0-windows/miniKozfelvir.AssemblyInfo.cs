@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("miniKozfelvir")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4e9d4350b4e4c5d59c5fcfa79181095be3fd4f9e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b3604a587858b597db124a6bcb4332c9df297bc7")]
 [assembly: System.Reflection.AssemblyProductAttribute("miniKozfelvir")]
 [assembly: System.Reflection.AssemblyTitleAttribute("miniKozfelvir")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

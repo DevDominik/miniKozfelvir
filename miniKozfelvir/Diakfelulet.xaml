@@ -127,7 +127,9 @@
         </Border>
         
         <Border Style="{StaticResource brdr}" Grid.Row="5" Grid.Column="0" Width="200" Height="40">
-            <TextBox x:Name="tbxMatek" Style="{StaticResource generalStyle}" Text="MATEMATIKA EREDMÉNY" MaxLength="2"/>
+            <TextBox x:Name="tbxMatek" Style="{StaticResource generalStyle}" Text="MATEMATIKA EREDMÉNY" MaxLength="2">
+                
+            </TextBox>
         </Border>
         <Border Style="{StaticResource brdr}" Grid.Row="5" Grid.Column="1" Width="200" Height="40">
             <TextBox x:Name="tbxMagyar" Style="{StaticResource generalStyle}" Text="MAGYAR EREDMÉNY" MaxLength="2"/>
