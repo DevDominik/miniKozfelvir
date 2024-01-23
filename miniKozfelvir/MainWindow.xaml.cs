@@ -21,6 +21,7 @@ namespace miniKozfelvir
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// Györfi Marcell
     public partial class MainWindow : Window
     {
         ObservableCollection<Felvetelizo> felvetelizok;

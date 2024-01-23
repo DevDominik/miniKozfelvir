@@ -18,6 +18,7 @@ namespace miniKozfelvir
     /// <summary>
     /// Interaction logic for Diakfelulet.xaml
     /// </summary>
+    /// Kecskés Dominik Bálint
     public partial class Diakfelulet : Window
     {
         static Felvetelizo felvetelizo;

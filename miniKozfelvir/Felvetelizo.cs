@@ -6,6 +6,7 @@ using System.Windows.Input;
 
 namespace miniKozfelvir
 {
+    // Györfi Marcell
     public class Felvetelizo : IFelvetelizo
     {
         public const string CSVFEJ = "om_azonosito;nev;email;szuletesi_datum;ertesitesi_cim;matek_eredmeny;magyar_eredmeny";

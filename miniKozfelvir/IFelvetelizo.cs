@@ -1,5 +1,6 @@
 ﻿
 using System;
+// Györfi Marcell
     public interface IFelvetelizo
     {
 
