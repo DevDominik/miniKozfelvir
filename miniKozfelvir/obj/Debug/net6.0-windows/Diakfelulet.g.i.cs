@@ -117,7 +117,7 @@ namespace miniKozfelvir {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/miniKozfelvir;V1.0.0.0;component/diakfelulet.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/miniKozfelvir;component/diakfelulet.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Diakfelulet.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
