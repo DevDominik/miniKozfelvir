@@ -18,6 +18,11 @@ namespace miniKozfelvir
         byte? matek;
         byte? magyar;
 
+        public Felvetelizo()
+        {
+
+        }
+
         public Felvetelizo(string omAzon, string nev, string email, DateTime szuletesiDatum, string ertesitesiCim, byte? matek, byte? magyar)
         {
             this.omAzon = omAzon;

@@ -29,16 +29,7 @@
                         </SolidColorBrush>
                     </Setter.Value>
                 </Setter>
-                <Setter Property="BorderBrush">
-                    <Setter.Value>
-                        <SolidColorBrush>
-                            <SolidColorBrush.Color>
-                                <Color A="255" R="60" G="60" B="60"></Color>
-                            </SolidColorBrush.Color>
-                        </SolidColorBrush>
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="BorderThickness" Value="1.6"/>
+                <Setter Property="BorderThickness" Value="0"/>
                 <Setter Property="Width" Value="200"></Setter>
                 <Setter Property="Height" Value="40"></Setter>
                 <Setter Property="Foreground">
@@ -67,7 +58,19 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-            <Style x:Key="missing" TargetType="{x:Type Control}" BasedOn="{StaticResource generalStyle}">
+            <Style x:Key="brdr" TargetType="{x:Type Border}">
+                <Setter Property="BorderBrush">
+                    <Setter.Value>
+                        <SolidColorBrush>
+                            <SolidColorBrush.Color>
+                                <Color A="255" R="60" G="60" B="60"></Color>
+                            </SolidColorBrush.Color>
+                        </SolidColorBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="BorderThickness" Value="1.6"/>
+            </Style>
+            <Style x:Key="missing" TargetType="{x:Type Border}" BasedOn="{StaticResource brdr}">
                 <Setter Property="BorderBrush">
                     <Setter.Value>
                         <SolidColorBrush>
@@ -103,14 +106,35 @@
                 </SolidColorBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" x:Name="tbxDiakneve" Style="{StaticResource generalStyle}" Width="450" Text="DIÁK NEVE"/>
-        <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="tbxAzon" Style="{StaticResource generalStyle}" Width="450" Text="OM AZONOSÍTÓ"/>
-        <TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" x:Name="tbxEmail" Style="{StaticResource generalStyle}" Width="450" Text="E-MAIL CÍM"/>
-        <TextBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="tbxCim" Style="{StaticResource generalStyle}" Width="450" Text="ÉRTESÍTÉSI CÍM"/>
-        <Label Grid.Row="4" Content="SZÜLETÉSI DÁTUM" Grid.Column="0" Style="{StaticResource generalStyle}"/>
-        <DatePicker Grid.Row="4" Grid.Column="1" x:Name="dpDatum" Style="{StaticResource generalStyle}"/>
-        <TextBox Grid.Row="5" Grid.Column="0" x:Name="tbxMatek" Style="{StaticResource generalStyle}" Text="MATEMATIKA EREDMÉNY" MaxLength="2"/>
-        <TextBox Grid.Row="5" Grid.Column="1" x:Name="tbxMagyar" Style="{StaticResource generalStyle}" Text="MAGYAR EREDMÉNY" MaxLength="2"/>
-        <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" x:Name="btnFelvesz" Style="{StaticResource button}" Content="FELVÉTEL"/>
+        <Border Style="{StaticResource brdr}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Width="450" Height="40">
+            <TextBox x:Name="tbxDiakneve" Style="{StaticResource generalStyle}" Width="450" Text="DIÁK NEVE"/>
+        </Border>
+        
+        <Border Style="{StaticResource brdr}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Width="450" Height="40">
+            <TextBox x:Name="tbxAzon" Style="{StaticResource generalStyle}" Width="450" Text="OM AZONOSÍTÓ"/>
+        </Border>
+        <Border Style="{StaticResource brdr}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Width="450" Height="40">
+            <TextBox x:Name="tbxEmail" Style="{StaticResource generalStyle}" Width="450" Text="E-MAIL CÍM"/>
+        </Border>
+        <Border Style="{StaticResource brdr}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Width="450" Height="40">
+            <TextBox x:Name="tbxCim" Style="{StaticResource generalStyle}" Width="450" Text="ÉRTESÍTÉSI CÍM"/>
+        </Border>
+        <Border Style="{StaticResource brdr}" Grid.Row="4" Grid.Column="0" Height="40" Width="200">
+            <Label Grid.Row="0" Content="SZÜLETÉSI DÁTUM" Grid.Column="0" Style="{StaticResource generalStyle}"/>
+        </Border>
+        <Border Style="{StaticResource brdr}" Grid.Row="4" Grid.Column="1" Width="200" Height="40">
+            <DatePicker x:Name="dpDatum" Style="{StaticResource generalStyle}"/>
+        </Border>
+        
+        <Border Style="{StaticResource brdr}" Grid.Row="5" Grid.Column="0" Width="200" Height="40">
+            <TextBox x:Name="tbxMatek" Style="{StaticResource generalStyle}" Text="MATEMATIKA EREDMÉNY" MaxLength="2"/>
+        </Border>
+        <Border Style="{StaticResource brdr}" Grid.Row="5" Grid.Column="1" Width="200" Height="40">
+            <TextBox x:Name="tbxMagyar" Style="{StaticResource generalStyle}" Text="MAGYAR EREDMÉNY" MaxLength="2"/>
+        </Border>
+        <Border Style="{StaticResource brdr}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Width="200" Height="40">
+            <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" x:Name="btnFelvesz" Style="{StaticResource button}" Content="FELVÉTEL"/>
+        </Border>
+        
     </Grid>
 </Window>

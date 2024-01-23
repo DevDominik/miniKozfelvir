@@ -21,121 +21,157 @@ namespace miniKozfelvir
     public partial class Diakfelulet : Window
     {
         static Felvetelizo felvetelizo;
-        public Diakfelulet(Felvetelizo uj)
+        static Dictionary<TextBox, string> alapSzovegek = new Dictionary<TextBox, string>();
+        public Diakfelulet()
         {
             InitializeComponent();
-            tbxDiakneve.TextInput += (s, e) => {
-                if (e.Text.Trim().Length == 0)
+            felvetelizo = new Felvetelizo();
+            alapSzovegek[tbxDiakneve] = tbxDiakneve.Text;
+            alapSzovegek[tbxAzon] = tbxAzon.Text;
+            alapSzovegek[tbxCim] = tbxCim.Text;
+            alapSzovegek[tbxEmail] = tbxEmail.Text;
+            alapSzovegek[tbxMagyar] = tbxMagyar.Text;
+            alapSzovegek[tbxMatek] = tbxMatek.Text;
+            tbxDiakneve.TextChanged += (s, e) => {
+                Border brdr = tbxDiakneve.Parent as Border;
+                if (tbxDiakneve.Text.Trim().Length == 0)
                 {
-                    tbxDiakneve.Style = Application.Current.FindResource("missing") as Style;
-                    tbxDiakneve.Text = "DIÁK NEVE";
+                    brdr.Style = this.Resources["missing"] as Style;
                     return;
                 }
-                if (e.Text == "DIÁK NEVE")
+                if (tbxDiakneve.Text == "DIÁK NEVE")
                 {
-                    tbxDiakneve.Style = Application.Current.FindResource("missing") as Style;
+                    brdr.Style = this.Resources["missing"] as Style;
                     return;
                 }
-                tbxDiakneve.Style = Application.Current.FindResource("generalStyle") as Style;
-                felvetelizo.Neve = e.Text.Trim();
+                brdr.Style = this.Resources["brdr"] as Style;
+                felvetelizo.Neve = tbxDiakneve.Text.Trim();
             };
-            tbxAzon.TextInput += (s, e) => {
-                if (e.Text.Trim().Length != 11)
+            tbxAzon.TextChanged += (s, e) => {
+                Border brdr = tbxAzon.Parent as Border;
+                if (tbxAzon.Text.Trim().Length != 11)
                 {
-                    tbxAzon.Style = Application.Current.FindResource("missing") as Style;
-                    if (e.Text.Length == 0)
+                    brdr.Style = this.Resources["missing"] as Style;
+                    return;
+                }
+                brdr.Style = this.Resources["brdr"] as Style;
+                felvetelizo.OM_Azonosito = tbxAzon.Text.Trim();
+            };
+            tbxCim.TextChanged += (s, e) => {
+                Border brdr = tbxCim.Parent as Border;
+                if (tbxCim.Text.Trim().Length == 0)
+                {
+                    brdr.Style = this.Resources["missing"] as Style;
+                    return;
+                }
+                if (tbxCim.Text == "ÉRTESÍTÉSI CÍM")
+                {
+                    brdr.Style = this.Resources["missing"] as Style;
+                    return;
+                }
+                brdr.Style = this.Resources["brdr"] as Style;
+                felvetelizo.ErtesitesiCime = tbxCim.Text.Trim();
+            };
+            tbxEmail.TextChanged += (s, e) => {
+                Border brdr = tbxEmail.Parent as Border;
+                if (tbxEmail.Text.Trim().Length == 0)
+                {
+                    brdr.Style = this.Resources["missing"] as Style;
+                    return;
+                }
+                if (tbxEmail.Text == "E-MAIL CÍM")
+                {
+                    brdr.Style = this.Resources["missing"] as Style;
+                    return;
+                }
+                brdr.Style = this.Resources["brdr"] as Style;
+                felvetelizo.Email = tbxEmail.Text.Trim();
+            };
+            tbxMagyar.TextChanged += (s, e) => {
+                Border brdr = tbxMagyar.Parent as Border;
+                int konvert = -1;
+                if (tbxMagyar.Text.Length < 1)
+                {
+                    brdr.Style = this.Resources["missing"] as Style;
+                    return;
+                }
+                if (tbxMagyar.Text.Length > 0)
+                {
+                    try
                     {
-                        tbxAzon.Text = "OM AZONOSÍTÓ";
-                        return;
+                        konvert = int.Parse(tbxMagyar.Text.Trim());
                     }
-                    if (e.Text == "OM AZONOSÍTÓ")
+                    catch (Exception)
                     {
-                        tbxAzon.Style = Application.Current.FindResource("missing") as Style;
-                        return;
+                        brdr.Style = this.Resources["missing"] as Style;
+                        throw;
                     }
-                    return;
+                   
                 }
-                tbxAzon.Style = Application.Current.FindResource("generalStyle") as Style;
-                felvetelizo.OM_Azonosito = e.Text.Trim();
-            };
-            tbxCim.TextInput += (s, e) => {
-                if (e.Text.Trim().Length == 0)
-                {
-                    tbxCim.Style = Application.Current.FindResource("missing") as Style;
-                    tbxCim.Text = "ÉRTESÍTÉSI CÍM";
-                    return;
-                }
-                if (e.Text == "ÉRTESÍTÉSI CÍM")
-                {
-                    tbxCim.Style = Application.Current.FindResource("missing") as Style;
-                    return;
-                }
-                tbxCim.Style = Application.Current.FindResource("generalStyle") as Style;
-                felvetelizo.ErtesitesiCime = e.Text.Trim();
-            };
-            tbxEmail.TextInput += (s, e) => {
-                if (e.Text.Trim().Length == 0)
-                {
-                    tbxEmail.Style = Application.Current.FindResource("missing") as Style;
-                    tbxEmail.Text = "E-MAIL CÍM";
-                    return;
-                }
-                if (e.Text == "E-MAIL CÍM")
-                {
-                    tbxEmail.Style = Application.Current.FindResource("missing") as Style;
-                    return;
-                }
-                tbxEmail.Style = Application.Current.FindResource("generalStyle") as Style;
-                felvetelizo.Email = e.Text.Trim();
-            };
-            tbxMagyar.TextInput += (s, e) => {
-                int konvert;
-                try
-                {
-                    konvert = int.Parse(e.Text.Trim());
-                }
-                catch (Exception)
-                {
-                    tbxMagyar.Style = Application.Current.FindResource("missing") as Style;
-                    throw;
-                }
+                
                 if (konvert > 50 || konvert < 0)
                 {
 
-                    tbxMagyar.Style = Application.Current.FindResource("missing") as Style;
+                    brdr.Style = this.Resources["missing"] as Style;
                 }
                 else
                 {
-                    tbxMagyar.Style = Application.Current.FindResource("generalStyle") as Style;
+                    brdr.Style = this.Resources["brdr"] as Style;
                     felvetelizo.Magyar = konvert;
                 }
             };
-            tbxMatek.TextInput += (s, e) => {
-                int konvert;
-                try
+            tbxMatek.TextChanged += (s, e) => {
+                Border brdr = tbxMatek.Parent as Border;
+                int konvert = -1;
+                if (tbxMatek.Text.Length < 1)
                 {
-                    konvert = int.Parse(e.Text.Trim());
+                    brdr.Style = this.Resources["missing"] as Style;
+                    return;
                 }
-                catch (Exception)
+                if (tbxMatek.Text.Length > 0)
                 {
-                    tbxMatek.Style = Application.Current.FindResource("missing") as Style;
-                    throw;
+                    try
+                    {
+                        konvert = int.Parse(tbxMatek.Text.Trim());
+                    }
+                    catch (Exception)
+                    {
+                        brdr.Style = this.Resources["missing"] as Style;
+                        throw;
+                    }
+
                 }
                 if (konvert > 50 || konvert < 0)
                 {
-                    tbxMatek.Style = Application.Current.FindResource("missing") as Style;
+                    brdr.Style = this.Resources["missing"] as Style;
                 }
                 else
                 {
-                    tbxMatek.Style = Application.Current.FindResource("generalStyle") as Style;
+                    brdr.Style = this.Resources["brdr"] as Style;
                     felvetelizo.Matematika = konvert;
                 }
+               
             };
+            tbxDiakneve.GotFocus += TorolSzoveg;
+            tbxAzon.GotFocus += TorolSzoveg;
+            tbxCim.GotFocus += TorolSzoveg;
+            tbxEmail.GotFocus += TorolSzoveg;
+            tbxMatek.GotFocus += TorolSzoveg;
+            tbxMagyar.GotFocus += TorolSzoveg;
+            tbxDiakneve.LostFocus += VisszaAllitSzoveg;
+            tbxAzon.LostFocus += VisszaAllitSzoveg;
+            tbxCim.LostFocus += VisszaAllitSzoveg;
+            tbxEmail.LostFocus += VisszaAllitSzoveg;
+            tbxMagyar.LostFocus += VisszaAllitSzoveg;
+            tbxMatek.LostFocus += VisszaAllitSzoveg;
             dpDatum.SelectedDateChanged += (s, e) => {
                 felvetelizo.SzuletesiDatum = dpDatum.SelectedDate.Value;
             };
-            
-            btnFelvesz.Click += (s, e) => { 
+            this.Closing += (s, e) => {
+                if (!Ellenoriz()) { e.Cancel = true; }
+            };
+
+            btnFelvesz.Click += (s, e) => {
                 if (Ellenoriz())
                 {
                     this.Close();
@@ -143,31 +179,57 @@ namespace miniKozfelvir
             };
         }
 
+        private void VisszaAllitSzoveg(object sender, RoutedEventArgs e)
+        {
+            if (sender is TextBox)
+            {
+                TextBox kuldo = sender as TextBox;
+                if (kuldo.Text.Length == 0)
+                {
+                    kuldo.Text = alapSzovegek[kuldo];
+                }
+            }
+        }
+
+        private void TorolSzoveg(object sender, RoutedEventArgs e)
+        {
+            if (sender is TextBox)
+            {
+                TextBox kuldo = sender as TextBox;
+                kuldo.Text = string.Empty;
+            }
+        }
+
         public bool Ellenoriz()
         {
-            bool vissza = false;
+            bool vissza = true;
+            Border brdr;
             if (tbxDiakneve.Text.Length == 0 || tbxDiakneve.Text == "DIÁK NEVE")
             {
                 vissza = false;
-                tbxDiakneve.Style = Application.Current.FindResource("missing") as Style;
-            } 
-            
+                brdr = tbxDiakneve.Parent as Border;
+                brdr.Style = this.Resources["missing"] as Style;
+            }
+
             if (tbxAzon.Text.Length != 11 || tbxAzon.Text == "OM AZONOSÍTÓ")
             {
                 vissza = false;
-                tbxAzon.Style = Application.Current.FindResource("missing") as Style;
+                brdr = tbxAzon.Parent as Border;
+                brdr.Style = this.Resources["missing"] as Style;
             }
 
             if (tbxEmail.Text.Length == 0 || tbxEmail.Text == "E-MAIL CÍM")
             {
                 vissza = false;
-                tbxEmail.Style = Application.Current.FindResource("missing") as Style;
+                brdr = tbxEmail.Parent as Border;
+                brdr.Style = this.Resources["missing"] as Style;
             }
 
             if (tbxCim.Text.Length == 0 || tbxCim.Text == "ÉRTESÍTÉSI CÍM")
             {
                 vissza = false;
-                tbxCim.Style = Application.Current.FindResource("missing") as Style;
+                brdr = tbxCim.Parent as Border;
+                brdr.Style = this.Resources["missing"] as Style;
             }
 
             int konvert;
@@ -179,11 +241,12 @@ namespace miniKozfelvir
             {
                 konvert = -1;
             }
-            
+
             if (konvert > 50 || konvert < 0 || tbxMagyar.Text == "MAGYAR EREDMÉNY")
             {
                 vissza = false;
-                tbxMagyar.Style = Application.Current.FindResource("missing") as Style;
+                brdr = tbxMagyar.Parent as Border;
+                brdr.Style = this.Resources["missing"] as Style;
             }
 
             try
@@ -198,13 +261,8 @@ namespace miniKozfelvir
             if (konvert > 50 || konvert < 0 || tbxMatek.Text == "MATEMATIKA EREDMÉNY")
             {
                 vissza = false;
-                tbxMatek.Style = Application.Current.FindResource("missing") as Style;
-            }
-
-            if (dpDatum.SelectedDate.Value == null)
-            {
-                vissza = false;
-                dpDatum.Style = Application.Current.FindResource("missing") as Style;
+                brdr = tbxMatek.Parent as Border;
+                brdr.Style = this.Resources["missing"] as Style;
             }
             return vissza;
         }

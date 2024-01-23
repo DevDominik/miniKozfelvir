@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kecsk\\Source\\Repos\\miniKozfelvir\\miniKozfelvir\\miniKozfelvir.csproj",
+      "projectUniqueName": "C:\\Users\\kecsk\\source\\repos\\miniKozfelvir\\miniKozfelvir\\miniKozfelvir.csproj",
       "projectName": "miniKozfelvir",
-      "projectPath": "C:\\Users\\kecsk\\Source\\Repos\\miniKozfelvir\\miniKozfelvir\\miniKozfelvir.csproj",
+      "projectPath": "C:\\Users\\kecsk\\source\\repos\\miniKozfelvir\\miniKozfelvir\\miniKozfelvir.csproj",
       "packagesPath": "C:\\Users\\kecsk\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kecsk\\Source\\Repos\\miniKozfelvir\\miniKozfelvir\\obj\\",
+      "outputPath": "C:\\Users\\kecsk\\source\\repos\\miniKozfelvir\\miniKozfelvir\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

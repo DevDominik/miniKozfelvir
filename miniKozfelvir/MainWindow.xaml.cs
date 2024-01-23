@@ -55,13 +55,18 @@ namespace miniKozfelvir
 
         private void btnUj_Click(object sender, RoutedEventArgs e)
         {
-            Felvetelizo? ujFelvetelizo = null;
-            Diakfelulet ujAblak = new Diakfelulet(ujFelvetelizo);
+            
+            Diakfelulet ujAblak = new Diakfelulet();
             ujAblak.ShowDialog();
 
-            if (ujFelvetelizo != null) {
-                felvetelizok.Add(ujFelvetelizo);
-            }
+            ujAblak.Closing += (s, e) =>
+            {
+                if (ujAblak.Ellenoriz())
+                {
+                    felvetelizok.Add(ujAblak.GetFelvetelizo());
+                    dgFelvetelizok.Items.Refresh();
+                }
+            };
 
         }
 
