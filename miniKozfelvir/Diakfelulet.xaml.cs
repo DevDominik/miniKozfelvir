@@ -168,6 +168,7 @@ namespace miniKozfelvir
             tbxMatek.LostFocus += VisszaAllitSzoveg;
             tbxMagyar.PreviewTextInput += SzamValidalas;
             tbxMatek.PreviewTextInput += SzamValidalas;
+            tbxAzon.PreviewTextInput += SzamValidalas;
             dpDatum.SelectedDateChanged += (s, e) => {
                 felvetelizo.SzuletesiDatum = dpDatum.SelectedDate.Value;
             };
