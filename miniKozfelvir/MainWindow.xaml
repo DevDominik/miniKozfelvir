@@ -12,7 +12,8 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <DataGrid x:Name="dgFelvetelizok" />
+        <DataGrid x:Name="dgFelvetelizok"
+                  IsReadOnly="True" />
         <StackPanel Grid.Column="1">
             <Button x:Name="btnUj" Click="btnUj_Click">Új diák</Button>
             <Button x:Name="btnTorol" Click="btnTorol_Click">Törlés</Button>
