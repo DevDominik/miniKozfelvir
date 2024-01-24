@@ -74,12 +74,13 @@ namespace miniKozfelvir
 
         private void btnUj_Click(object sender, RoutedEventArgs e)
         {
-            Diakfelulet ujAblak = new Diakfelulet();
+            Felvetelizo ujDiak = new Felvetelizo();
+
+            Diakfelulet ujAblak = new Diakfelulet(ujDiak);
             ujAblak.ShowDialog();
 
-            if (ujAblak.GetAllapot())
-            {
-                felvetelizok.Add(ujAblak.GetFelvetelizo());
+            if (ujAblak.GetAllapot()) {
+                felvetelizok.Add(ujDiak);
             }
         }
 
@@ -96,6 +97,25 @@ namespace miniKozfelvir
         private void btnImport_Click(object sender, RoutedEventArgs e)
         {
             Import();
+        }
+
+        private void btnModosit_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgFelvetelizok.SelectedIndex != -1)
+            {
+                Felvetelizo diak = dgFelvetelizok.SelectedItem as Felvetelizo;
+                int index = felvetelizok.IndexOf(diak);
+
+                Diakfelulet ujAblak = new Diakfelulet(diak, true);
+                ujAblak.ShowDialog();
+
+                if (ujAblak.GetAllapot())
+                {
+                    felvetelizok[index] = diak;
+                    dgFelvetelizok.Items.Refresh();
+                }
+            }
+            
         }
     }
 }

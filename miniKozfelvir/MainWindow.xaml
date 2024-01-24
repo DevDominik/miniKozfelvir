@@ -16,6 +16,7 @@
                   IsReadOnly="True" />
         <StackPanel Grid.Column="1">
             <Button x:Name="btnUj" Click="btnUj_Click">Új diák</Button>
+            <Button x:Name="btnModosit" Click="btnModosit_Click">Módosít</Button>
             <Button x:Name="btnTorol" Click="btnTorol_Click">Törlés</Button>
             <Button x:Name="btnExport" Click="btnExport_Click">Exportálás</Button>
             <Button x:Name="btnImport" Click="btnImport_Click">Importálás</Button>
