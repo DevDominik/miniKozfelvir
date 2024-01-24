@@ -22,13 +22,28 @@ namespace miniKozfelvir
     /// Kecskés Dominik Bálint
     public partial class Diakfelulet : Window
     {
-        Felvetelizo felvetelizo;
         Dictionary<TextBox, string> alapSzovegek = new Dictionary<TextBox, string>();
+        bool omAzonTilt = false;
         bool befejezve = false;
-        public Diakfelulet()
+        public Diakfelulet(Felvetelizo felvetelizo, bool modosit = false)
         {
             InitializeComponent();
-            felvetelizo = new Felvetelizo();
+            
+            if (modosit)
+            {
+                this.omAzonTilt = true;
+                tbxAzon.IsReadOnly = true;
+                
+                Border brdr = tbxAzon.Parent as Border;
+                brdr.Style = this.Resources["locked"] as Style;
+                tbxDiakneve.Text = felvetelizo.Neve;
+                tbxAzon.Text = felvetelizo.OM_Azonosito;
+                tbxCim.Text = felvetelizo.ErtesitesiCime;
+                tbxEmail.Text = felvetelizo.Email;
+                tbxMagyar.Text = felvetelizo.Magyar.ToString();
+                tbxMatek.Text = felvetelizo.Matematika.ToString();
+                dpDatum.Text = felvetelizo.SzuletesiDatum.ToString();
+            }
             alapSzovegek[tbxDiakneve] = tbxDiakneve.Text;
             alapSzovegek[tbxAzon] = tbxAzon.Text;
             alapSzovegek[tbxCim] = tbxCim.Text;
@@ -52,6 +67,11 @@ namespace miniKozfelvir
             };
             tbxAzon.TextChanged += (s, e) => {
                 Border brdr = tbxAzon.Parent as Border;
+                if (omAzonTilt)
+                {
+                    brdr.Style = this.Resources["locked"] as Style;
+                    return;
+                }
                 if (tbxAzon.Text.Trim().Length != 11)
                 {
                     brdr.Style = this.Resources["missing"] as Style;
@@ -187,6 +207,7 @@ namespace miniKozfelvir
                 }
             };
         }
+        
 
         private void VisszaAllitSzoveg(object sender, RoutedEventArgs e)
         {
@@ -283,11 +304,6 @@ namespace miniKozfelvir
                 brdr.Style = this.Resources["missing"] as Style;
             }
             return vissza;
-        }
-
-        public Felvetelizo GetFelvetelizo()
-        {
-            return felvetelizo;
         }
     }
 }

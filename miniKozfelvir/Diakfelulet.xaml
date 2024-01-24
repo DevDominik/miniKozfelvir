@@ -81,6 +81,17 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            <Style x:Key="locked" TargetType="{x:Type Border}" BasedOn="{StaticResource brdr}">
+                <Setter Property="BorderBrush">
+                    <Setter.Value>
+                        <SolidColorBrush>
+                            <SolidColorBrush.Color>
+                                <Color A="255" R="232" G="157" B="77"></Color>
+                            </SolidColorBrush.Color>
+                        </SolidColorBrush>
+                    </Setter.Value>
+                </Setter>
+            </Style>
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
