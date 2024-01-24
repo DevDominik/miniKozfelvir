@@ -1,0 +1,56 @@
+[
+  {
+    "OM_Azonosito": "12345678901",
+    "Neve": "kdsknda",
+    "ErtesitesiCime": "Budapest, Kossuth utca 10.",
+    "Email": "kovacs.peter@example.com",
+    "SzuletesiDatum": "1990-05-15T00:00:00",
+    "Matematika": -1,
+    "Magyar": -1
+  },
+  {
+    "OM_Azonosito": "23456789012",
+    "Neve": "Nagy Anna",
+    "ErtesitesiCime": "Debrecen, Petőfi tér 5.",
+    "Email": "nagy.anna@example.com",
+    "SzuletesiDatum": "1992-08-22T00:00:00",
+    "Matematika": 25,
+    "Magyar": 30
+  },
+  {
+    "OM_Azonosito": "34567890123",
+    "Neve": "Szabó Gábor",
+    "ErtesitesiCime": "Szeged, Széchenyi tér 8.",
+    "Email": "szabo.gabor@example.com",
+    "SzuletesiDatum": "1995-02-10T00:00:00",
+    "Matematika": -1,
+    "Magyar": -1
+  },
+  {
+    "OM_Azonosito": "45678901234",
+    "Neve": "Kiss Judit",
+    "ErtesitesiCime": "Pécs, Rákóczi út 12.",
+    "Email": "kiss.judit@example.com",
+    "SzuletesiDatum": "1994-11-03T00:00:00",
+    "Matematika": 40,
+    "Magyar": 15
+  },
+  {
+    "OM_Azonosito": "56789012345",
+    "Neve": "Horváth Bence",
+    "ErtesitesiCime": "Miskolc, Szent István út 6.",
+    "Email": "horvath.bence@example.com",
+    "SzuletesiDatum": "1991-07-18T00:00:00",
+    "Matematika": 10,
+    "Magyar": 20
+  },
+  {
+    "OM_Azonosito": "11111111111",
+    "Neve": "jad",
+    "ErtesitesiCime": "asa",
+    "Email": "a@m.c",
+    "SzuletesiDatum": "0001-01-01T00:00:00",
+    "Matematika": -1,
+    "Magyar": -1
+  }
+]
