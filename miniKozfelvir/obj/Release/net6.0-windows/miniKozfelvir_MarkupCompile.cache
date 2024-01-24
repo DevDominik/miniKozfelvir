@@ -4,11 +4,11 @@
 winexe
 C#
 .cs
-C:\Users\kecskes.dominik\source\repos\miniKozfelvir\miniKozfelvir\obj\Debug\net6.0-windows\
+C:\Users\kecskes.dominik\source\repos\miniKozfelvir\miniKozfelvir\obj\Release\net6.0-windows\
 miniKozfelvir
 none
 false
-TRACE;DEBUG;NET;NET6_0;NETCOREAPP
+TRACE;RELEASE;NET;NET6_0;NETCOREAPP
 C:\Users\kecskes.dominik\source\repos\miniKozfelvir\miniKozfelvir\App.xaml
 2307880871
 
@@ -16,5 +16,5 @@ C:\Users\kecskes.dominik\source\repos\miniKozfelvir\miniKozfelvir\App.xaml
 1941675070116
 Diakfelulet.xaml;MainWindow.xaml;
 
-False
+True
 

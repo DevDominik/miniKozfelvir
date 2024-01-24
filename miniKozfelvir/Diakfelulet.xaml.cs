@@ -44,7 +44,10 @@ namespace miniKozfelvir
                 tbxMatek.Text = felvetelizo.Matematika == -1 ? "MATEMATIKA EREDMÉNY" : felvetelizo.Matematika.ToString();
                 dpDatum.Text = felvetelizo.SzuletesiDatum.ToString();
                 btnFelvesz.Content = "MÓDOSÍT";
+                btnFelvesz.Style = this.Resources["modify"] as Style;
             }
+            felvetelizo.Matematika = -1;
+            felvetelizo.Magyar = -1;
             alapSzovegek[tbxDiakneve] = tbxDiakneve.Text;
             alapSzovegek[tbxAzon] = tbxAzon.Text;
             alapSzovegek[tbxCim] = tbxCim.Text;
@@ -140,6 +143,7 @@ namespace miniKozfelvir
                     {
 
                         brdr.Style = this.Resources["missing"] as Style;
+                        return;
                     }
                     else
                     {

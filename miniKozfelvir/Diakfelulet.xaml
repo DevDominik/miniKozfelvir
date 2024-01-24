@@ -58,6 +58,17 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            <Style x:Key="modify" TargetType="{x:Type Button}" BasedOn="{StaticResource generalStyle}">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush>
+                            <SolidColorBrush.Color>
+                                <Color A="255" R="204" B="27" G="115"/>
+                            </SolidColorBrush.Color>
+                        </SolidColorBrush>
+                    </Setter.Value>
+                </Setter>
+            </Style>
             <Style x:Key="brdr" TargetType="{x:Type Border}">
                 <Setter Property="BorderBrush">
                     <Setter.Value>
