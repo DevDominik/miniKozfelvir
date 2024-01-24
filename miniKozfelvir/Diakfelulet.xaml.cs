@@ -28,12 +28,16 @@ namespace miniKozfelvir
         public Diakfelulet(Felvetelizo felvetelizo, bool modosit = false)
         {
             InitializeComponent();
-            
+            alapSzovegek[tbxDiakneve] = tbxDiakneve.Text;
+            alapSzovegek[tbxAzon] = tbxAzon.Text;
+            alapSzovegek[tbxCim] = tbxCim.Text;
+            alapSzovegek[tbxEmail] = tbxEmail.Text;
+            alapSzovegek[tbxMagyar] = tbxMagyar.Text;
+            alapSzovegek[tbxMatek] = tbxMatek.Text;
             if (modosit)
             {
                 this.omAzonTilt = true;
                 tbxAzon.IsReadOnly = true;
-                
                 Border brdr = tbxAzon.Parent as Border;
                 brdr.Style = this.Resources["locked"] as Style;
                 tbxDiakneve.Text = felvetelizo.Neve;
@@ -45,15 +49,12 @@ namespace miniKozfelvir
                 dpDatum.Text = felvetelizo.SzuletesiDatum.ToString();
                 btnFelvesz.Content = "MÓDOSÍT";
                 btnFelvesz.Style = this.Resources["modify"] as Style;
+            } else
+            {
+                felvetelizo.Matematika = -1;
+                felvetelizo.Magyar = -1;
             }
-            felvetelizo.Matematika = -1;
-            felvetelizo.Magyar = -1;
-            alapSzovegek[tbxDiakneve] = tbxDiakneve.Text;
-            alapSzovegek[tbxAzon] = tbxAzon.Text;
-            alapSzovegek[tbxCim] = tbxCim.Text;
-            alapSzovegek[tbxEmail] = tbxEmail.Text;
-            alapSzovegek[tbxMagyar] = tbxMagyar.Text;
-            alapSzovegek[tbxMatek] = tbxMatek.Text;
+            
             tbxDiakneve.TextChanged += (s, e) => {
                 Border brdr = tbxDiakneve.Parent as Border;
                 if (tbxDiakneve.Text.Trim().Length == 0)

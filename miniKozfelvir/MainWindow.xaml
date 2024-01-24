@@ -6,20 +6,82 @@
         xmlns:local="clr-namespace:miniKozfelvir"
         mc:Ignorable="d"
         Title="MainWindow" Height="650" Width="1200" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style x:Key="generalStyle" TargetType="{x:Type Control}">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush>
+                            <SolidColorBrush.Color>
+                                <Color A="255" R="35" G="35" B="35"></Color>
+                            </SolidColorBrush.Color>
+                        </SolidColorBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Width" Value="300"></Setter>
+                <Setter Property="Height" Value="30"></Setter>
+                <Setter Property="Margin" Value="5"></Setter>
+                <Setter Property="Foreground">
+                    <Setter.Value>
+                        <SolidColorBrush>
+                            <SolidColorBrush.Color>
+                                <Color A="255" R="210" G="210" B="210"/>
+                            </SolidColorBrush.Color>
+                        </SolidColorBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="FontFamily" Value="Arial"></Setter>
+                <Setter Property="FontSize" Value="12"></Setter>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="BorderBrush">
+                    <Setter.Value>
+                        <SolidColorBrush>
+                            <SolidColorBrush.Color>
+                                <Color A="255" R="60" G="60" B="60"></Color>
+                            </SolidColorBrush.Color>
+                        </SolidColorBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="BorderThickness" Value="1.6"/>
+            </Style>
+            <Style TargetType="{x:Type DataGrid}">
+                <Setter Property="Background" Value="{x:Null}"/>
+            </Style>
+            <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource generalStyle}">
+                <Setter Property="Width" Value="850"></Setter>
+                <Setter Property="Height" Value="20"></Setter>
+                <Setter Property="FontSize" Value="10"></Setter>
+                <Setter Property="Margin" Value="2"></Setter>
+            </Style>
+            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource generalStyle}">
+                
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-
+        <Rectangle Grid.ColumnSpan="2" Grid.RowSpan="10" Width="1200" Height="650">
+            <Rectangle.Fill>
+                <SolidColorBrush>
+                    <SolidColorBrush.Color>
+                        <Color A="255" R="20" B="20" G="20"/>
+                    </SolidColorBrush.Color>
+                </SolidColorBrush>
+            </Rectangle.Fill>
+        </Rectangle>
         <DataGrid x:Name="dgFelvetelizok"
                   IsReadOnly="True" />
         <StackPanel Grid.Column="1">
-            <Button x:Name="btnUj" Click="btnUj_Click">Új diák</Button>
-            <Button x:Name="btnModosit" Click="btnModosit_Click">Módosít</Button>
-            <Button x:Name="btnTorol" Click="btnTorol_Click">Törlés</Button>
-            <Button x:Name="btnExport" Click="btnExport_Click">Exportálás</Button>
-            <Button x:Name="btnImport" Click="btnImport_Click">Importálás</Button>
+            <Button x:Name="btnUj" Click="btnUj_Click">ÚJ DIÁK</Button>
+            <Button x:Name="btnModosit" Click="btnModosit_Click">MÓDOSÍT</Button>
+            <Button x:Name="btnTorol" Click="btnTorol_Click">TÖRLÉS</Button>
+            <Button x:Name="btnExport" Click="btnExport_Click">EXPORTÁLÁS</Button>
+            <Button x:Name="btnImport" Click="btnImport_Click">IMPORTÁLÁS</Button>
         </StackPanel>
     </Grid>
 </Window>
