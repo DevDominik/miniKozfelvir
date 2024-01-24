@@ -111,7 +111,7 @@
         </Border>
         
         <Border Style="{StaticResource brdr}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Width="450" Height="40">
-            <TextBox x:Name="tbxAzon" Style="{StaticResource generalStyle}" Width="450" Text="OM AZONOSÍTÓ"/>
+            <TextBox x:Name="tbxAzon" MaxLength="11" Style="{StaticResource generalStyle}" Width="450" Text="OM AZONOSÍTÓ"/>
         </Border>
         <Border Style="{StaticResource brdr}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Width="450" Height="40">
             <TextBox x:Name="tbxEmail" Style="{StaticResource generalStyle}" Width="450" Text="E-MAIL CÍM"/>

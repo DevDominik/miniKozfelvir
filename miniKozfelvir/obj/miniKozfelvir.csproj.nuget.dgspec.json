@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kecsk\\source\\repos\\miniKozfelvir\\miniKozfelvir\\miniKozfelvir.csproj": {}
+    "C:\\Users\\kecskes.dominik\\Source\\Repos\\miniKozfelvir\\miniKozfelvir\\miniKozfelvir.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kecsk\\source\\repos\\miniKozfelvir\\miniKozfelvir\\miniKozfelvir.csproj": {
+    "C:\\Users\\kecskes.dominik\\Source\\Repos\\miniKozfelvir\\miniKozfelvir\\miniKozfelvir.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kecsk\\source\\repos\\miniKozfelvir\\miniKozfelvir\\miniKozfelvir.csproj",
+        "projectUniqueName": "C:\\Users\\kecskes.dominik\\Source\\Repos\\miniKozfelvir\\miniKozfelvir\\miniKozfelvir.csproj",
         "projectName": "miniKozfelvir",
-        "projectPath": "C:\\Users\\kecsk\\source\\repos\\miniKozfelvir\\miniKozfelvir\\miniKozfelvir.csproj",
-        "packagesPath": "C:\\Users\\kecsk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kecsk\\source\\repos\\miniKozfelvir\\miniKozfelvir\\obj\\",
+        "projectPath": "C:\\Users\\kecskes.dominik\\Source\\Repos\\miniKozfelvir\\miniKozfelvir\\miniKozfelvir.csproj",
+        "packagesPath": "C:\\Users\\kecskes.dominik\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kecskes.dominik\\Source\\Repos\\miniKozfelvir\\miniKozfelvir\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\kecsk\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\kecskes.dominik\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -62,7 +58,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     }

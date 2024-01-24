@@ -59,8 +59,10 @@ namespace miniKozfelvir
             
             Diakfelulet ujAblak = new Diakfelulet();
             ujAblak.ShowDialog();
-
-            felvetelizok.Add(ujAblak.GetFelvetelizo());
+            if (ujAblak.GetAllapot())
+            {
+                felvetelizok.Add(ujAblak.GetFelvetelizo());
+            }
         }
 
         private void btnTorol_Click(object sender, RoutedEventArgs e)

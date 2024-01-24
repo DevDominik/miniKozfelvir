@@ -22,8 +22,9 @@ namespace miniKozfelvir
     /// Kecskés Dominik Bálint
     public partial class Diakfelulet : Window
     {
-        static Felvetelizo felvetelizo;
-        static Dictionary<TextBox, string> alapSzovegek = new Dictionary<TextBox, string>();
+        Felvetelizo felvetelizo;
+        Dictionary<TextBox, string> alapSzovegek = new Dictionary<TextBox, string>();
+        bool befejezve = false;
         public Diakfelulet()
         {
             InitializeComponent();
@@ -168,11 +169,9 @@ namespace miniKozfelvir
             tbxMatek.LostFocus += VisszaAllitSzoveg;
             tbxMagyar.PreviewTextInput += SzamValidalas;
             tbxMatek.PreviewTextInput += SzamValidalas;
+            tbxAzon.PreviewTextInput += SzamValidalas;
             dpDatum.SelectedDateChanged += (s, e) => {
                 felvetelizo.SzuletesiDatum = dpDatum.SelectedDate.Value;
-            };
-            this.Closing += (s, e) => {
-                if (!Ellenoriz()) { e.Cancel = true; }
             };
 
             btnFelvesz.Click += (s, e) => {
@@ -206,6 +205,11 @@ namespace miniKozfelvir
                 TextBox kuldo = sender as TextBox;
                 kuldo.Text = string.Empty;
             }
+        }
+
+        public bool GetAllapot()
+        {
+            return this.befejezve;
         }
 
         public bool Ellenoriz()
