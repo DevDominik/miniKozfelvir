@@ -16,15 +16,15 @@ namespace miniKozfelvir
         string email;
         DateTime szuletesiDatum;
         string ertesitesiCim;
-        byte? matek;
-        byte? magyar;
+        int matek;
+        int magyar;
 
         public Felvetelizo()
         {
 
         }
 
-        public Felvetelizo(string omAzon, string nev, string email, DateTime szuletesiDatum, string ertesitesiCim, byte? matek, byte? magyar)
+        public Felvetelizo(string omAzon, string nev, string email, DateTime szuletesiDatum, string ertesitesiCim, int matek, int magyar)
         {
             this.omAzon = omAzon;
             this.nev = nev;
@@ -61,11 +61,11 @@ namespace miniKozfelvir
             get => Convert.ToInt32(matek);
             set
             {
-                if (value < 0 || value > 50)
+                if (value < -1 || value > 50)
                 {
                     throw new ArgumentOutOfRangeException();
                 }
-                matek = Convert.ToByte(value);
+                matek = Convert.ToInt32(value);
             }
         }
         public int Magyar
@@ -73,11 +73,11 @@ namespace miniKozfelvir
             get => Convert.ToInt32(magyar);
             set
             {
-                if (value < 0 || value > 50)
+                if (value < -1 || value > 50)
                 {
                     throw new ArgumentOutOfRangeException();
                 }
-                magyar = Convert.ToByte(value);
+                magyar = Convert.ToInt32(value);
             }
         }
 
@@ -101,11 +101,11 @@ namespace miniKozfelvir
             this.szuletesiDatum = DateTime.Parse(mezok[3]);
             this.ertesitesiCim = mezok[4];
 
-            byte _matek;
-            this.matek = Byte.TryParse(mezok[5], out _matek) ? (byte?)_matek : null;
+            int _matek;
+            this.matek = Int32.TryParse(mezok[5], out _matek) ? _matek : -1;
 
-            byte _magyar;
-            this.magyar = Byte.TryParse(mezok[6], out _magyar) ? (byte?)_magyar : null;
+            int _magyar;
+            this.magyar = Int32.TryParse(mezok[6], out _magyar) ? _magyar : -1;
         }
     }
 }
