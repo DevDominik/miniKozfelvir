@@ -40,9 +40,10 @@ namespace miniKozfelvir
                 tbxAzon.Text = felvetelizo.OM_Azonosito;
                 tbxCim.Text = felvetelizo.ErtesitesiCime;
                 tbxEmail.Text = felvetelizo.Email;
-                tbxMagyar.Text = felvetelizo.Magyar.ToString();
-                tbxMatek.Text = felvetelizo.Matematika.ToString();
+                tbxMagyar.Text = felvetelizo.Magyar == -1 ? "MAGYAR EREDMÉNY" : felvetelizo.Magyar.ToString();
+                tbxMatek.Text = felvetelizo.Matematika == -1 ? "MATEMATIKA EREDMÉNY" : felvetelizo.Matematika.ToString();
                 dpDatum.Text = felvetelizo.SzuletesiDatum.ToString();
+                btnFelvesz.Content = "MÓDOSÍT";
             }
             alapSzovegek[tbxDiakneve] = tbxDiakneve.Text;
             alapSzovegek[tbxAzon] = tbxAzon.Text;
@@ -118,9 +119,10 @@ namespace miniKozfelvir
             tbxMagyar.TextChanged += (s, e) => {
                 Border brdr = tbxMagyar.Parent as Border;
                 int konvert = -1;
-                if (tbxMagyar.Text.Length < 1)
+                if (tbxMagyar.Text == "MAGYAR EREDMÉNY")
                 {
-                    brdr.Style = this.Resources["missing"] as Style;
+                    brdr.Style = this.Resources["brdr"] as Style;
+                    felvetelizo.Magyar = -1;
                     return;
                 }
                 if (tbxMagyar.Text.Length > 0 && tbxMagyar.Text.Length < 3)
@@ -134,26 +136,27 @@ namespace miniKozfelvir
                         brdr.Style = this.Resources["missing"] as Style;
                         throw;
                     }
-                   
-                }
-                
-                if (konvert > 50 || konvert < 0)
-                {
+                    if (konvert > 50 || konvert < 0)
+                    {
 
-                    brdr.Style = this.Resources["missing"] as Style;
+                        brdr.Style = this.Resources["missing"] as Style;
+                    }
+                    else
+                    {
+                        brdr.Style = this.Resources["brdr"] as Style;
+                        felvetelizo.Magyar = konvert;
+                    }
+
                 }
-                else
-                {
-                    brdr.Style = this.Resources["brdr"] as Style;
-                    felvetelizo.Magyar = konvert;
-                }
+               
             };
             tbxMatek.TextChanged += (s, e) => {
                 Border brdr = tbxMatek.Parent as Border;
                 int konvert = -1;
-                if (tbxMatek.Text.Length < 1)
+                if (tbxMatek.Text == "MATEMATIKA EREDMÉNY")
                 {
-                    brdr.Style = this.Resources["missing"] as Style;
+                    brdr.Style = this.Resources["brdr"] as Style;
+                    felvetelizo.Matematika = -1;
                     return;
                 }
                 if (tbxMatek.Text.Length > 0 && tbxMatek.Text.Length < 3)
@@ -167,21 +170,26 @@ namespace miniKozfelvir
                         brdr.Style = this.Resources["missing"] as Style;
                         throw;
                     }
-
+                    if (konvert > 50 || konvert < 0)
+                    {
+                        brdr.Style = this.Resources["missing"] as Style;
+                    }
+                    else
+                    {
+                        brdr.Style = this.Resources["brdr"] as Style;
+                        felvetelizo.Matematika = konvert;
+                    }
                 }
-                if (konvert > 50 || konvert < 0)
-                {
-                    brdr.Style = this.Resources["missing"] as Style;
-                }
-                else
-                {
-                    brdr.Style = this.Resources["brdr"] as Style;
-                    felvetelizo.Matematika = konvert;
-                }
+                
                
             };
             tbxDiakneve.GotFocus += TorolSzoveg;
-            tbxAzon.GotFocus += TorolSzoveg;
+            tbxAzon.GotFocus += (s, e) => {
+                if (!omAzonTilt)
+                {
+                    tbxAzon.Text = string.Empty;
+                }
+            };
             tbxCim.GotFocus += TorolSzoveg;
             tbxEmail.GotFocus += TorolSzoveg;
             tbxMatek.GotFocus += TorolSzoveg;
@@ -272,36 +280,44 @@ namespace miniKozfelvir
             }
 
             int konvert;
-            try
+
+            if (tbxMagyar.Text.Length > 0 && tbxMagyar.Text.Length < 3)
             {
-                konvert = int.Parse(tbxMagyar.Text);
-            }
-            catch (Exception)
-            {
-                konvert = -1;
+                
+                try
+                {
+                    konvert = int.Parse(tbxMagyar.Text);
+                }
+                catch (Exception)
+                {
+                    konvert = -1;
+                }
+
+                if (konvert > 50 || konvert < 0)
+                {
+                    vissza = false;
+                    brdr = tbxMagyar.Parent as Border;
+                    brdr.Style = this.Resources["missing"] as Style;
+                }
             }
 
-            if (konvert > 50 || konvert < 0 || tbxMagyar.Text == "MAGYAR EREDMÉNY")
+            if (tbxMatek.Text.Length > 0 && tbxMatek.Text.Length < 3)
             {
-                vissza = false;
-                brdr = tbxMagyar.Parent as Border;
-                brdr.Style = this.Resources["missing"] as Style;
-            }
+                try
+                {
+                    konvert = int.Parse(tbxMatek.Text);
+                }
+                catch (Exception)
+                {
+                    konvert = -1;
+                }
 
-            try
-            {
-                konvert = int.Parse(tbxMatek.Text);
-            }
-            catch (Exception)
-            {
-                konvert = -1;
-            }
-
-            if (konvert > 50 || konvert < 0 || tbxMatek.Text == "MATEMATIKA EREDMÉNY")
-            {
-                vissza = false;
-                brdr = tbxMatek.Parent as Border;
-                brdr.Style = this.Resources["missing"] as Style;
+                if (konvert > 50 || konvert < 0)
+                {
+                    vissza = false;
+                    brdr = tbxMatek.Parent as Border;
+                    brdr.Style = this.Resources["missing"] as Style;
+                }
             }
             return vissza;
         }

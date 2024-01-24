@@ -47,7 +47,7 @@
                 <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
                 
             </Style>
-            <Style x:Key="button" TargetType="Button" BasedOn="{StaticResource generalStyle}">
+            <Style x:Key="add" TargetType="{x:Type Button}" BasedOn="{StaticResource generalStyle}">
                 <Setter Property="Background">
                     <Setter.Value>
                         <SolidColorBrush>
@@ -146,7 +146,7 @@
             <TextBox x:Name="tbxMagyar" Style="{StaticResource generalStyle}" Text="MAGYAR EREDMÉNY" MaxLength="2"/>
         </Border>
         <Border Style="{StaticResource brdr}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Width="200" Height="40">
-            <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" x:Name="btnFelvesz" Style="{StaticResource button}" Content="FELVÉTEL"/>
+            <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" x:Name="btnFelvesz" Style="{StaticResource add}" Content="FELVÉTEL"/>
         </Border>
         
     </Grid>
