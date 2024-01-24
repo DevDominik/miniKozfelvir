@@ -87,6 +87,11 @@ namespace miniKozfelvir
                     brdr.Style = this.Resources["missing"] as Style;
                     return;
                 }
+                if (!Regex.IsMatch(tbxEmail.Text, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase))
+                {
+                    brdr.Style = this.Resources["missing"] as Style;
+                    return;
+                }
                 brdr.Style = this.Resources["brdr"] as Style;
                 felvetelizo.Email = tbxEmail.Text.Trim();
             };
@@ -177,6 +182,7 @@ namespace miniKozfelvir
             btnFelvesz.Click += (s, e) => {
                 if (Ellenoriz())
                 {
+                    this.befejezve = true;
                     this.Close();
                 }
             };
